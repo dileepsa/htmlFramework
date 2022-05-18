@@ -36,3 +36,4 @@ exports.format = format;
 exports.formatAttribute = formatAttribute;
 exports.style = style;
 exports.html = html;
+exports.formatProperty = formatProperty;

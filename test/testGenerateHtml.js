@@ -1,4 +1,4 @@
-const { html, format, formatAttribute } = require('../src/generateHtml.js');
+const { html, format, formatAttribute, style, formatProperty } = require('../src/generateHtml.js');
 const assert = require('assert');
 
 describe('html', () => {
@@ -63,6 +63,20 @@ describe('Format Attrib', () => {
   it('Should create style attrib with multiple properties', () => {
     const actual = formatAttribute(['style', { width: '100px', height: '100px' }]);
     const expected = 'style="width:100px;height:100px"';
+    assert.strictEqual(actual, expected);
+  });
+});
+
+describe('Style', () => {
+  it('Should create one property for style', () => {
+    const actual = style({ width: '100px' });
+    const expected = 'width:100px';
+    assert.strictEqual(actual, expected);
+  });
+
+  it('Should create multiple properties for style', () => {
+    const actual = style({ width: '100px', height: '100px' });
+    const expected = 'width:100px;height:100px';
     assert.strictEqual(actual, expected);
   });
 });
