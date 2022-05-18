@@ -1,4 +1,4 @@
-const { html, format } = require('../src/generateHtml.js');
+const { html, format, formatAttribute } = require('../src/generateHtml.js');
 const assert = require('assert');
 
 describe('html', () => {
@@ -33,7 +33,7 @@ describe('html', () => {
   });
 });
 
-describe('Format ', () => {
+describe('Format multiple attribs', () => {
   it('Should create one attribute', () => {
     const actual = format({ class: 'something' });
     const expected = 'class="something"'
@@ -43,6 +43,26 @@ describe('Format ', () => {
   it('Should create multiple attribute', () => {
     const actual = format({ class: 'something', id: 'first' });
     const expected = 'class="something" id="first"'
+    assert.strictEqual(actual, expected);
+  });
+});
+
+describe('Format Attrib', () => {
+  it('Should create attribute', () => {
+    const actual = formatAttribute(['class', 'something']);
+    const expected = 'class="something"';
+    assert.strictEqual(actual, expected);
+  });
+
+  it('Should create style attribute', () => {
+    const actual = formatAttribute(['style', { width: '100px' }]);
+    const expected = 'style="width:100px"';
+    assert.strictEqual(actual, expected);
+  });
+
+  it('Should create style attrib with multiple properties', () => {
+    const actual = formatAttribute(['style', { width: '100px', height: '100px' }]);
+    const expected = 'style="width:100px;height:100px"';
     assert.strictEqual(actual, expected);
   });
 });

@@ -28,6 +28,10 @@ const html = ([tag, attributes, ...content]) => {
   return '<' + tag + ' ' + allAttributes + '>' + newContent + '</' + tag + '>';
 };
 
+console.log(html(
+  ['div', { style: { width: '100px', height: '200px' } }]
+));
+
 exports.format = format;
 exports.formatAttribute = formatAttribute;
 exports.style = style;
