@@ -1,4 +1,4 @@
-const { html } = require('../src/generateTag.js');
+const { html, formatAttributes } = require('../src/generateTag.js');
 const assert = require('assert');
 
 describe('html', () => {
@@ -29,6 +29,20 @@ describe('html', () => {
   it('Should Create nested tags with attributes', () => {
     const actual = html(['div', { class: 'outer' }, ['div', { class: 'inner' }, 'this is inner tag']]);
     const expected = '<div class="outer"><div class="inner">this is inner tag</div></div>';
+    assert.strictEqual(actual, expected);
+  });
+});
+
+describe('Format Attributes', () => {
+  it('Should create one attribute', () => {
+    const actual = formatAttributes({ class: 'something' });
+    const expected = 'class="something"'
+    assert.strictEqual(actual, expected);
+  });
+
+  it('Should create multiple attribute', () => {
+    const actual = formatAttributes({ class: 'something', id: 'first' });
+    const expected = 'class="something" id="first"'
     assert.strictEqual(actual, expected);
   });
 });
