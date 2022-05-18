@@ -80,3 +80,11 @@ describe('Style', () => {
     assert.strictEqual(actual, expected);
   });
 });
+
+describe('Format property', () => {
+  it('Should format property', () => {
+    const actual = formatProperty(['width', '100px'])
+    const expected = 'width:100px'
+    assert.strictEqual(actual, expected);
+  });
+});
