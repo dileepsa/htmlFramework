@@ -19,4 +19,16 @@ describe('html', () => {
     const expected = '<div ></div>';
     assert.strictEqual(actual, expected);
   });
+
+  it('Should Create nested tags', () => {
+    const actual = html(['div', {}, ['div', {}, 'this is inner tag']]);
+    const expected = '<div ><div >this is inner tag</div></div>';
+    assert.strictEqual(actual, expected);
+  });
+
+  it('Should Create nested tags with attributes', () => {
+    const actual = html(['div', { class: 'outer' }, ['div', { class: 'inner' }, 'this is inner tag']]);
+    const expected = '<div class="outer"><div class="inner">this is inner tag</div></div>';
+    assert.strictEqual(actual, expected);
+  });
 });
