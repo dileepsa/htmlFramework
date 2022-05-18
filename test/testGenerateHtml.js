@@ -1,4 +1,4 @@
-const { html, formatAttributes } = require('../src/generateTag.js');
+const { html, format } = require('../src/generateHtml.js');
 const assert = require('assert');
 
 describe('html', () => {
@@ -33,15 +33,15 @@ describe('html', () => {
   });
 });
 
-describe('Format Attributes', () => {
+describe('Format ', () => {
   it('Should create one attribute', () => {
-    const actual = formatAttributes({ class: 'something' });
+    const actual = format({ class: 'something' });
     const expected = 'class="something"'
     assert.strictEqual(actual, expected);
   });
 
   it('Should create multiple attribute', () => {
-    const actual = formatAttributes({ class: 'something', id: 'first' });
+    const actual = format({ class: 'something', id: 'first' });
     const expected = 'class="something" id="first"'
     assert.strictEqual(actual, expected);
   });
